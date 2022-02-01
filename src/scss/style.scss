@@ -1,0 +1,98 @@
+@import "reset-css";
+@import "fonts-icon";
+@import "animation";
+
+@mixin font($font_name, $file_name, $weight, $style) {
+  @font-face {
+    font-family: $font_name;
+    font-display: swap;
+    src: url("../fonts/#{$file_name}.woff") format("woff"), url("../fonts/#{$file_name}.woff2") format("woff2");
+    font-weight: #{$weight};
+    font-style: #{$style};
+  }
+}
+
+@mixin for-phone-only {
+  @media (max-width: 599px) {
+    @content;
+  }
+}
+
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+
+@mixin for-desktop-up {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin stickerWidth($width) {
+  width: 100%;
+  text-align: center;
+  @include for-tablet-portrait-up {
+    width: $width - 42;
+  }
+  @include for-tablet-landscape-up {
+    width: $width - 12;
+  }
+  @include for-desktop-up {
+    width: $width;
+  }
+}
+
+@include font("gotham", "gotham-book", "400", "normal");
+@include font("gotham", "gotham-medium", "500", "normal");
+@include font("gotham", "gotham-bold", "700", "normal");
+@include font("opensans", "opensans-regular", "400", "normal");
+@include font("roboto", "roboto-regular", "400", "normal");
+@include font("myriadpro", "myriadpro", "400", "normal");
+@include font("robotoCondensed", "robotoCondensed-bold", "700", "normal");
+
+$color-title: #f5f5f5;
+$color-white: #fff;
+$color-blue: rgb(17, 116, 158);
+$color-darkGray: #222;
+/********************/
+/*   basic styles   */
+/********************/
+body {
+  font-family: gotham, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+
+  &.lock {
+    overflow: hidden;
+  }
+}
+
+.wrapper {
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.content {
+  flex: 1 1 auto;
+}
+
+.container {
+  min-width: 320px;
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+@import "_header";
+@import "_content";
+@import "_footer";

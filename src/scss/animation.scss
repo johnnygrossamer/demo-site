@@ -1,0 +1,51 @@
+@keyframes click-me {
+  0%, 40%, 50%, 80%, 86%, 90%, 100% {
+    transform: rotate(0deg) translateY(0);
+  }
+  43% {
+    transform: rotate(-10deg);
+  }
+  46% {
+    transform: rotate(10deg);
+  }
+  83% {
+    transform: translateY(-4px);
+  }
+  88% {
+    transform: translateY(-2px);
+  }
+}
+@keyframes highlight {
+  0%, 40%, 50%, 80%, 86%, 90%, 100% {
+    opacity: 1;
+  }
+  45% {
+    opacity: .7;
+  }
+  83% {
+    opacity: .7;
+  }
+  88% {
+    opacity: .7;
+  }
+}
+@keyframes scroll-down {
+  0%, 40%, 50%, 80%, 86%, 90%, 95%, 100% {
+    transform: rotate(180deg) translateY(0);
+  }
+  43% {
+    transform: rotate(160deg);
+  }
+  46% {
+    transform: rotate(200deg);
+  }
+  83% {
+    transform: rotate(180deg) translateY(-15px);
+  }
+  88% {
+    transform: rotate(180deg) translateY(-10px);
+  }
+  92% {
+    transform: rotate(180deg) translateY(-5px);
+  }
+}
