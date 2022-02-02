@@ -51,3 +51,21 @@
     transform: rotate(180deg) translateY(-5px);
   }
 }
+
+/**************************/
+/*   animation for page   */
+/**************************/
+
+._an._ascent {
+  opacity: 0;
+  transform: translateY(120%);
+  transition: opacity .8s ease 0s, transform .8s ease 0s;
+}
+
+._an._ascent.complete {
+  opacity: 1;
+  transform: translateY(0);
+}
+._delay {
+  transition-delay: .8s;
+}
