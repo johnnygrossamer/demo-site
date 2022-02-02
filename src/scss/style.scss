@@ -1,41 +1,59 @@
 @import "reset-css";
 @import "fonts-icon";
+@import "fonts";
 @import "animation";
 
-@mixin font($font_name, $file_name, $weight, $style) {
-  @font-face {
-    font-family: $font_name;
-    font-display: swap;
-    src: url("../fonts/#{$file_name}.woff") format("woff"), url("../fonts/#{$file_name}.woff2") format("woff2");
-    font-weight: #{$weight};
-    font-style: #{$style};
-  }
-}
+/***************************/
+/*   adaptive properties   */
+/***************************/
+
+//Breakpoints
+$phone-only: 599;
+$tablet-portrait-up: 600;
+$tablet-landscape-up: 900;
+$desktop-up: 1200;
 
 @mixin for-phone-only {
-  @media (max-width: 599px) {
+  @media (max-width: $phone-only + px) {
     @content;
   }
 }
 
 @mixin for-tablet-portrait-up {
-  @media (min-width: 600px) {
+  @media (min-width: $tablet-portrait-up + px) {
     @content;
   }
 }
 
 @mixin for-tablet-landscape-up {
-  @media (min-width: 900px) {
+  @media (min-width: $tablet-landscape-up + px) {
     @content;
   }
 }
 
 @mixin for-desktop-up {
-  @media (min-width: 1200px) {
+  @media (min-width: $desktop-up + px) {
     @content;
   }
 }
 
+// Create adaptive property
+@mixin adaptiv-value($property, $minSize, $maxSize) {
+  $addSize: $maxSize - $minSize;
+  #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$desktop-up - 320}));
+  @include for-desktop-up {
+    #{$property}: $maxSize + px;
+  }
+}
+@mixin adaptiv-value-to-tablet-landscape($property, $minSize, $maxSize) {
+  $addSize: $maxSize - $minSize;
+  #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$tablet-landscape-up - 320}));
+  @include for-tablet-landscape-up {
+    #{$property}: $maxSize + px;
+  }
+}
+
+// Others
 @mixin stickerWidth($width) {
   width: 100%;
   text-align: center;
@@ -50,24 +68,21 @@
   }
 }
 
-@include font("gotham", "gotham-book", "400", "normal");
-@include font("gotham", "gotham-medium", "500", "normal");
-@include font("gotham", "gotham-bold", "700", "normal");
-@include font("opensans", "opensans-regular", "400", "normal");
-@include font("roboto", "roboto-regular", "400", "normal");
-@include font("myriadpro", "myriadpro", "400", "normal");
-@include font("robotoCondensed", "robotoCondensed-bold", "700", "normal");
+/********************/
+/*   basic styles   */
+/********************/
+
+// Color
 $color-title: #f5f5f5;
 $color-white: #fff;
 $color-blue: rgb(17, 116, 158);
 $color-darkGray: #222;
-/********************/
-/*   basic styles   */
-/********************/
+
 body {
   font-family: gotham, sans-serif;
   font-size: 15px;
   font-weight: 400;
+  min-width: 320px;
 
   &.lock {
     overflow: hidden;
@@ -90,6 +105,60 @@ body {
   max-width: 1170px;
   margin: 0 auto;
   padding: 0 15px;
+
+}
+
+.slide-title {
+  display: flex;
+  justify-content: center;
+
+  h1 {
+    font-family: gotham, sans-serif;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #222;
+    @include adaptiv-value("font-size", 23, 38);
+  }
+
+  span {
+    font-family: robotoCondensed, sans-serif;
+    font-weight: 700;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    display: block;
+    transform: translate(-50%, -50%);
+    color: #d7d7d7;
+    @include adaptiv-value("font-size", 150, 247);
+  }
+}
+
+.slide-title._light {
+  h1 {
+    color: $color-white;
+  }
+
+  span {
+    opacity: 0.18;
+  }
+}
+
+.slide-subtitle {
+  display: block;
+  text-align: center;
+  color: #222;
+  @include adaptiv-value("font-size", 20, 30);
+  @include adaptiv-value("margin-top", 70, 115);
+  @include adaptiv-value("margin-bottom", 38, 76);
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 @import "_header";
