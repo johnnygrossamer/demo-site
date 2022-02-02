@@ -15,6 +15,7 @@
     transform: translateY(-2px);
   }
 }
+
 @keyframes highlight {
   0%, 40%, 50%, 80%, 86%, 90%, 100% {
     opacity: 1;
@@ -29,6 +30,7 @@
     opacity: .7;
   }
 }
+
 @keyframes scroll-down {
   0%, 40%, 50%, 80%, 86%, 90%, 95%, 100% {
     transform: rotate(180deg) translateY(0);

@@ -156,9 +156,11 @@ header.header {
         li {
           margin-right: 25px;
           border-top: 1px #343436 solid;
+
           &:last-child {
             border-bottom: 1px #343436 solid;
           }
+
           @include for-tablet-landscape-up {
             border-top: none;
             &:last-child {
@@ -185,12 +187,11 @@ header.header {
           width: 100%;
           padding: 15px 20px;
           color: $color-white;
-
           @include for-tablet-landscape-up {
             width: auto;
             padding: 30px 5px;
-            border-top: none;
             transition: border-bottom-color .5s ease-in-out 0s;
+            border-top: none;
             border-bottom: 5px rgba(0, 0, 0, 0) solid;
             &:hover {
               animation: highlight 5s ease-in-out .5s infinite;
@@ -207,15 +208,15 @@ header.header {
         position: relative;
         z-index: 2;
         display: flex;
+        overflow: hidden;
         justify-content: space-between;
         padding: 20px 40px;
-        overflow: hidden;
         @include for-tablet-portrait-up {
           justify-content: space-around;
         }
         @include for-tablet-landscape-up {
-          padding: 0;
           justify-content: flex-start;
+          padding: 0;
         }
 
         li {
@@ -240,8 +241,8 @@ header.header {
               }
             }
             @include for-desktop-up {
-              margin-top: -3px;
               font-size: 18px;
+              margin-top: -3px;
             }
           }
         }
