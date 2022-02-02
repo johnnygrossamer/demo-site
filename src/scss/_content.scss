@@ -1,92 +1,3 @@
-/********************/
-/*   basic styles   */
-/********************/
-.slide-title {
-  display: flex;
-  justify-content: center;
-
-  h1 {
-    font-family: gotham, sans-serif;
-    font-size: 23px;
-    font-weight: 500;
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    color: #222;
-    @include for-tablet-portrait-up {
-      font-size: 28px;
-    }
-    @include for-tablet-landscape-up {
-      font-size: 32px;
-    }
-    @include for-desktop-up {
-      font-size: 38px;
-    }
-  }
-
-  span {
-    font-family: robotoCondensed, sans-serif;
-    font-size: 150px;
-    font-weight: 700;
-    position: absolute;
-    z-index: -1;
-    top: 50%;
-    left: 50%;
-    display: block;
-    transform: translate(-50%, -50%);
-    color: #d7d7d7;
-    @include for-tablet-portrait-up {
-      font-size: 200px;
-    }
-    @include for-tablet-landscape-up {
-      font-size: 225px;
-    }
-    @include for-tablet-landscape-up {
-      font-size: 247px;
-    }
-  }
-}
-
-.slide-title._light {
-  h1 {
-    color: $color-white;
-  }
-
-  span {
-    opacity: 0.18;
-  }
-}
-
-.slide-subtitle {
-  font-size: 20px;
-  display: block;
-  margin-top: 70px;
-  margin-bottom: 38px;
-  text-align: center;
-  color: #222;
-  @include for-tablet-portrait-up {
-    font-size: 23px;
-    margin-top: 100px;
-    margin-bottom: 50px;
-  }
-  @include for-tablet-landscape-up {
-    font-size: 26px;
-    margin-top: 110px;
-    margin-bottom: 50px;
-  }
-  @include for-desktop-up {
-    font-size: 30px;
-    margin-top: 115px;
-    margin-bottom: 76px;
-  }
-}
-
-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 /*******************/
 /*   main-screen   */
 /*******************/
@@ -131,8 +42,8 @@ section.main-screen {
     }
     @include for-desktop-up {
       font-size: 25px;
-      margin-left: 21.5px;
-      letter-spacing: 21.5px;
+      margin-left: 22px;
+      letter-spacing: 22px;
     }
   }
 
@@ -184,15 +95,10 @@ section.main-screen {
 /*   awesome-agency   */
 /**********************/
 section.awesome-agency {
-  padding: 86px 0 64px;
   color: $color-white;
   background-color: #11749e;
-  @include for-tablet-portrait-up {
-    padding: 125px 0 70px;
-  }
-  @include for-tablet-landscape-up {
-    padding: 140px 0 80px;
-  }
+  @include adaptiv-value-to-tablet-landscape("padding-top", 86, 140);
+  @include adaptiv-value-to-tablet-landscape("padding-bottom", 64, 80);
   @include for-desktop-up {
     padding: 172px 0 128px;
   }
@@ -201,13 +107,9 @@ section.awesome-agency {
     display: flex;
     flex-wrap: wrap;
     margin: 0 -23px;
-    padding-top: 60px;
-    @include for-tablet-portrait-up {
-      padding-top: 80px;
-    }
+    @include adaptiv-value-to-tablet-landscape("padding-top", 60, 100);
     @include for-tablet-landscape-up {
       flex-wrap: nowrap;
-      padding-top: 100px;
     }
     @include for-desktop-up {
       padding-top: 144px;
@@ -242,34 +144,18 @@ section.awesome-agency {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 80px;
-            height: 80px;
             border-radius: 50%;
             background-color: #2e85aa;
-            @include for-tablet-portrait-up {
-              width: 90px;
-              height: 90px;
-            }
-            @include for-tablet-landscape-up {
-              width: 100px;
-              height: 100px;
-            }
+            @include adaptiv-value-to-tablet-landscape("width", 80, 100);
+            @include adaptiv-value-to-tablet-landscape("height", 80, 100);
             @include for-desktop-up {
               width: 133px;
               height: 133px;
             }
 
             img {
-              width: 24px;
-              height: 24px;
-              @include for-tablet-portrait-up {
-                width: 26px;
-                height: 26px;
-              }
-              @include for-tablet-landscape-up {
-                width: 28px;
-                height: 28px;
-              }
+              @include adaptiv-value-to-tablet-landscape("width", 24, 28);
+              @include adaptiv-value-to-tablet-landscape("height", 24, 28);
               @include for-desktop-up {
                 width: 34px;
                 height: 34px;
@@ -323,17 +209,18 @@ section.pre-blog {
       justify-content: end;
       color: $color-white;
       background-color: $color-darkGray;
-      @include for-tablet-portrait-up {
-        flex: 0 1 60%;
-      }
-      @include for-tablet-landscape-up {
-        flex: 0 1 50%;
-      }
 
       &:last-child {
         justify-content: start;
         color: #222;
         background-color: #f3f3f3;
+      }
+
+      @include for-tablet-portrait-up {
+        flex: 0 1 60%;
+      }
+      @include for-tablet-landscape-up {
+        flex: 0 1 50%;
       }
 
       .pre-blog__row {
@@ -419,16 +306,8 @@ section.pre-blog {
 /*   blog   */
 /************/
 section.blog {
-  padding: 100px 0 40px;
-  @include for-tablet-portrait-up {
-    padding: 120px 0 50px;
-  }
-  @include for-tablet-landscape-up {
-    padding: 140px 0 80px;
-  }
-  @include for-desktop-up {
-    padding: 164px 0 109px;
-  }
+  @include adaptiv-value("padding-top", 100, 164);
+  @include adaptiv-value("padding-bottom", 40, 109);
 
   .blog__row {
     display: flex;
@@ -594,6 +473,7 @@ section.offer {
       flex: 0 1 50%;
       flex-direction: column;
       max-width: 470px;
+      //noinspection SassScssResolvedByNameOnly
       @include for-tablet-landscape-up {
         align-items: start;
       }
@@ -607,13 +487,7 @@ section.offer {
       p.offer__text {
         line-height: 24px;
         width: 100%;
-        padding-bottom: 20px;
-        @include for-tablet-portrait-up {
-          padding-bottom: 30px;
-        }
-        @include for-tablet-landscape-up {
-          padding-bottom: 44px;
-        }
+        @include adaptiv-value-to-tablet-landscape("padding-bottom", 20, 44);
       }
 
       .offer__sticker {
@@ -661,16 +535,8 @@ section.offer {
 /*   out-team   */
 /****************/
 section.our-team {
-  padding: 100px 0 40px;
-  @include for-tablet-portrait-up {
-    padding: 120px 0 50px;
-  }
-  @include for-tablet-landscape-up {
-    padding: 140px 0 95px;
-  }
-  @include for-desktop-up {
-    padding: 164px 0 109px;
-  }
+  @include adaptiv-value("padding-top", 100, 164);
+  @include adaptiv-value("padding-bottom", 40, 109);
 
   .our-team__row {
     display: flex;
@@ -685,10 +551,6 @@ section.our-team {
       padding: 0 15px 50px;
       @include for-tablet-portrait-up {
         flex: 0 1 50%;
-      }
-      @include for-tablet-landscape-up {
-        flex: 0 1 25%;
-        padding-bottom: 0;
       }
       @include for-tablet-landscape-up {
         flex: 0 1 25%;
@@ -713,9 +575,6 @@ section.our-team {
           margin-top: -48px;
           text-align: center;
           background-color: $color-white;
-          @include for-tablet-portrait-up {
-            width: 65%;
-          }
           @include for-tablet-landscape-up {
             width: 80%;
           }
@@ -744,18 +603,10 @@ section.our-team {
 /*   support   */
 /***************/
 section.support {
-  padding: 130px 0 99px;
+  padding-bottom: 99px;
   color: $color-white;
   background: url('../img/offer__background.jpg') center/cover no-repeat;
-  @include for-tablet-portrait-up {
-    padding-top: 150px;
-  }
-  @include for-tablet-landscape-up {
-    padding-top: 180px;
-  }
-  @include for-desktop-up {
-    padding-top: 224px;
-  }
+  @include adaptiv-value("padding-top", 130, 224);
 
   form.support__form {
     margin-top: 120px;
