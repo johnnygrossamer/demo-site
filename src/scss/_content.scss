@@ -15,17 +15,19 @@ section.main-screen {
   }
 
   .main-screen__title {
-    font-family: gotham, sans-serif;
-    font-size: 13vw;
-    font-weight: 700;
-    text-align: center;
-    color: $color-title;
-    @include for-tablet-portrait-up {
-      font-size: 10.1vw;
-    }
     @include for-desktop-up {
       font-size: 153px;
       margin-top: 110px;
+    }
+    h1 {
+      font-family: gotham, sans-serif;
+      font-size: 13vw;
+      font-weight: 700;
+      text-align: center;
+      color: $color-title;
+      @include for-tablet-portrait-up {
+        font-size: 10.1vw;
+      }
     }
   }
 
@@ -202,18 +204,21 @@ section.pre-blog {
   .pre-blog__wrapper-row {
     display: flex;
     justify-content: center;
+    background-color: $color-darkGray;
+
+    &:last-child {
+      background-color: #f3f3f3;
+    }
 
     .pre-blog__message {
       display: flex;
       flex: 0 1 80%;
       justify-content: end;
       color: $color-white;
-      background-color: $color-darkGray;
 
       &:last-child {
         justify-content: start;
         color: #222;
-        background-color: #f3f3f3;
       }
 
       @include for-tablet-portrait-up {

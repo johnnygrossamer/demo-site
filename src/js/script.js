@@ -1,18 +1,5 @@
-@@include('testWebp.js')
-
-document.addEventListener("DOMContentLoaded", () => {
-    document.querySelector('.header__burger').addEventListener('click', (event) => {
-        event.target.classList.toggle('active');
-        document.querySelector('.header__menu').classList.toggle('active');
-        document.body.classList.toggle('lock');
-    }, false);
-    document.querySelector('.main-screen__button').addEventListener('click', (event) => {
-        document.querySelector('.awesome-agency').scrollIntoView({ block: "start", behavior: "smooth" });
-    }, false);
-
-
-
-}, false);
+@@include('test-webp.js')
+@@include('animate-on-scroll.js')
 
 function initMap() {
     // Styles a map in night mode.
@@ -236,3 +223,18 @@ function initMap() {
         ],
     });
 }
+
+function burger(){
+    document.querySelector('.header__burger').addEventListener('click', (event) => {
+        event.target.classList.toggle('active');
+        document.querySelector('.header__menu').classList.toggle('active');
+        document.body.classList.toggle('lock');
+    }, false);
+    document.querySelector('.main-screen__button').addEventListener('click', (event) => {
+        document.querySelector('.awesome-agency').scrollIntoView({ block: "start", behavior: "smooth" });
+    }, false);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    burger();
+}, false);
