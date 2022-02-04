@@ -660,7 +660,6 @@ section.support {
 
         input {
           width: 100%;
-          //width: 370px - 24;
           margin-bottom: 39px;
           padding: 20px 22px 17px;
           color: $color-white;
@@ -673,15 +672,7 @@ section.support {
       }
     }
 
-    textarea {
-      overflow: auto;
-      width: 100%;
-      height: 151px;
-      padding: 20px 22px 17px;
-      resize: none;
-      color: $color-white;
-      border: 1px solid $color-white;
-      background: none;
+    .form__wrapper {
       @include for-tablet-portrait-up {
         display: block;
         width: 50%;
@@ -689,6 +680,16 @@ section.support {
       }
       @include for-tablet-landscape-up {
         width: 100%;
+      }
+      textarea {
+        overflow: auto;
+        width: 100%;
+        height: 151px;
+        padding: 20px 22px 17px;
+        resize: none;
+        color: $color-white;
+        border: 1px solid $color-white;
+        background: none;
       }
     }
 
